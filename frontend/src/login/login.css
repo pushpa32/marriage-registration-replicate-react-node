@@ -1,0 +1,94 @@
+.main {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.sub-main {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 35%;
+    box-shadow: 4px 11px 11px 7px rgb(207, 207, 207);
+    border-radius: 12px;
+    background-color: #f5ecec;
+    padding: 10px;
+}
+
+input[type="password"],
+input[type="email"] {
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.custom-btn{
+    width: 85px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.imgs {
+    padding-top: 10px;
+    justify-content: center;
+    display: flex;
+}
+
+.container-image {
+    background-color: rgb(223, 221, 221);
+    border-radius: 150px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 115px;
+    width: 115px;
+}
+
+.profile {
+    height: 100px;
+    width: 100px;
+    border-radius: 130px;
+}
+
+.login-style {
+    text-transform: uppercase;
+    font-size: 30px;
+    padding-top: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.email {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    padding: 14px 0 0 25px;
+}
+
+.name {
+    padding-left: 70px;
+    font-size: 20px;
+}
+
+.second-input {
+    padding-top: 20px;
+}
+
+.form-style{
+    width: 300px;
+}
+
+
+
+.link {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+a {
+    color: blue;
+}

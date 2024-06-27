@@ -1,0 +1,132 @@
+body {
+  font-family: sans-serif;
+  background: #c1c3c5;
+}
+
+/* label {
+  display:block !important;
+  color: #000;
+} */
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="file"],
+input[type="email"] {
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 4px;
+  font-size: 14px;
+  color: #000;
+  /* margin: 0.5rem 0;
+  padding: 0 0.5rem;
+  height: 2rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box; */
+}
+
+input[type="submit"] {
+  height: 2.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background: #0971f1;
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+  /* color: #ff9900; */
+}
+
+/* .filter-select__control {
+  border-radius: 50rem !important;
+  border: 0px solid rgb(22 39 73 / 40%) !important;
+  margin-bottom: 0px !important;
+}
+
+.filter-select__control:focus {
+  border-radius: 50rem !important;
+  border: 0px solid rgb(22 39 73 / 40%) !important;
+  margin-bottom: 0px !important;
+} */
+
+/* .input-style {
+  display: flex;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  color: #10284b;
+  font-weight: 300;
+  padding-left: 20px;
+  padding-right: 20px;
+  line-height: 35px;
+  border-radius: 0px !important;
+  margin-bottom: 0px !important;
+  border: none !important;
+  background: #f8f8f8;
+  height: 40px;
+} */
+
+.form-headings {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #ffeeee;
+  padding: 10px;
+  /* text-transform: uppercase; */
+}
+
+.card-box-shadow {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-box-shadow-table-form {
+  background-color: #e2e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.step-btn-next {
+  margin-left: 5px;
+  margin-right: 5px
+}
+
+.btn-view {
+  background-color: #5a5ab7 !important;
+  color: white !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  font-size: 15px !important;
+  margin-left: 8px !important;
+}
+
+.font-style{
+  font-size: 13px;
+}
+
+/* header */
+.style-header{
+  background-color: #3e405c;
+  color: white;
+  padding: 10px 0px;
+}
+
+.style-headers-div {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.style-headers  {
+  flex-direction: column;
+}
+
+/* footer */
+.footer-body{
+  background-color: #3a3c42;
+  color: white;
+  padding: 10px 0px;
+}

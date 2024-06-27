@@ -1,0 +1,2975 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.9
+-- Dumped by pg_dump version 13.9
+
+-- Started on 2024-06-27 19:29:21
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 205 (class 1259 OID 99911)
+-- Name: aigrs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.aigrs (
+    id integer NOT NULL,
+    userid character varying(255) NOT NULL,
+    district_id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    office_name character varying(255) NOT NULL,
+    office_address character varying(255) NOT NULL,
+    phone character varying(255) NOT NULL,
+    email character varying(255),
+    status boolean DEFAULT true NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.aigrs OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 99909)
+-- Name: aigrs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.aigrs_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.aigrs_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3244 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: aigrs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.aigrs_id_seq OWNED BY public.aigrs.id;
+
+
+--
+-- TOC entry 223 (class 1259 OID 100408)
+-- Name: applicants; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.applicants (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    prefix character varying(255) NOT NULL,
+    first_name character varying(255) NOT NULL,
+    middle_name character varying(255),
+    last_name character varying(255) NOT NULL,
+    phone character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    gender character varying(255) NOT NULL,
+    district_id integer NOT NULL,
+    office_id integer NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.applicants OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 100406)
+-- Name: applicants_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.applicants_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.applicants_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3245 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: applicants_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.applicants_id_seq OWNED BY public.applicants.id;
+
+
+--
+-- TOC entry 225 (class 1259 OID 100419)
+-- Name: brides; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.brides (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    prefix character varying(255) NOT NULL,
+    first_name character varying(255) NOT NULL,
+    middle_name character varying(255),
+    last_name character varying(255) NOT NULL,
+    father_prefix character varying(255) NOT NULL,
+    father_first_name character varying(255) NOT NULL,
+    father_middle_name character varying(255),
+    father_last_name character varying(255) NOT NULL,
+    mother_prefix character varying(255) NOT NULL,
+    mother_first_name character varying(255) NOT NULL,
+    mother_middle_name character varying(255),
+    mother_last_name character varying(255) NOT NULL,
+    status character varying(255) NOT NULL,
+    occupation character varying(255) NOT NULL,
+    dob character varying(255) NOT NULL,
+    phone character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    isdisability character varying(255) NOT NULL,
+    disability character varying(255),
+    present_country_id integer NOT NULL,
+    present_state_id integer,
+    present_province character varying(255),
+    present_district integer,
+    present_villagetowncity character varying(255) NOT NULL,
+    present_policestation character varying(255),
+    present_postoffice character varying(255),
+    present_addressline1 character varying(255),
+    present_addressline2 character varying(255),
+    present_pincode character varying(255) NOT NULL,
+    present_lac character varying(255) NOT NULL,
+    present_residencyperiodmonth character varying(255) NOT NULL,
+    present_residencyperiodyear character varying(255) NOT NULL,
+    is_permanent_same_as_present character varying(255) NOT NULL,
+    permanent_country_id integer NOT NULL,
+    permanent_state_id integer,
+    permanent_province character varying(255),
+    permanent_district integer,
+    permanent_villagetowncity character varying(255) NOT NULL,
+    permanent_policestation character varying(255),
+    permanent_post_office character varying(255),
+    permanent_addressline1 character varying(255),
+    permanent_addressline2 character varying(255),
+    permanent_pincode character varying(255) NOT NULL,
+    permanent_lac character varying(255) NOT NULL,
+    permanent_residencyperiodmonth character varying(255) NOT NULL,
+    permanent_residencyperiodyear character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.brides OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 100417)
+-- Name: brides_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.brides_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.brides_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3246 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: brides_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.brides_id_seq OWNED BY public.brides.id;
+
+
+--
+-- TOC entry 215 (class 1259 OID 100058)
+-- Name: countries; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.countries (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.countries OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 100056)
+-- Name: countries_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.countries_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.countries_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3247 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: countries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.countries_id_seq OWNED BY public.countries.id;
+
+
+--
+-- TOC entry 211 (class 1259 OID 100010)
+-- Name: dcs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.dcs (
+    id integer NOT NULL,
+    userid character varying(255) NOT NULL,
+    district_id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    office_name character varying(255) NOT NULL,
+    office_address character varying(255) NOT NULL,
+    phone character varying(255),
+    email character varying(255),
+    status boolean DEFAULT true NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.dcs OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 100008)
+-- Name: dcs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.dcs_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dcs_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3248 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: dcs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.dcs_id_seq OWNED BY public.dcs.id;
+
+
+--
+-- TOC entry 219 (class 1259 OID 100128)
+-- Name: districts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.districts (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    lgd_code character varying(255) NOT NULL,
+    state_id integer NOT NULL,
+    dist_code integer NOT NULL,
+    status boolean DEFAULT true NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.districts OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 100126)
+-- Name: districts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.districts_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.districts_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3249 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: districts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.districts_id_seq OWNED BY public.districts.id;
+
+
+--
+-- TOC entry 229 (class 1259 OID 100441)
+-- Name: documents; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.documents (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    bride_identity_type character varying(255) NOT NULL,
+    bride_identity_doc character varying(255) NOT NULL,
+    groom_identity_type character varying(255) NOT NULL,
+    groom_identity_doc character varying(255) NOT NULL,
+    bride_age_type character varying(255) NOT NULL,
+    bride_age_doc character varying(255) NOT NULL,
+    groom_age_type character varying(255) NOT NULL,
+    groom_age_doc character varying(255) NOT NULL,
+    bride_present_address_type character varying(255) NOT NULL,
+    bride_present_address_doc character varying(255) NOT NULL,
+    groom_present_address_type character varying(255) NOT NULL,
+    groom_present_address_doc character varying(255) NOT NULL,
+    bride_permanent_address_type character varying(255) NOT NULL,
+    bride_permanent_address_doc character varying(255) NOT NULL,
+    groom_permanent_address_type character varying(255) NOT NULL,
+    groom_permanent_address_doc character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.documents OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1259 OID 100439)
+-- Name: documents_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.documents_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.documents_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3250 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: documents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.documents_id_seq OWNED BY public.documents.id;
+
+
+--
+-- TOC entry 231 (class 1259 OID 100452)
+-- Name: forms; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.forms (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    non_verified integer DEFAULT 0,
+    accept integer,
+    rejected integer,
+    query_status integer,
+    query_text character varying(255),
+    query_response integer,
+    upload_image integer DEFAULT 0,
+    certificate_generate integer,
+    upload_certificate integer DEFAULT 0 NOT NULL,
+    delivered integer,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.forms OWNER TO postgres;
+
+--
+-- TOC entry 230 (class 1259 OID 100450)
+-- Name: forms_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.forms_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.forms_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3251 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: forms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.forms_id_seq OWNED BY public.forms.id;
+
+
+--
+-- TOC entry 233 (class 1259 OID 100466)
+-- Name: generated_certificates; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.generated_certificates (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    certificate_no character varying(255) NOT NULL,
+    generated__certificate_path character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.generated_certificates OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 1259 OID 100464)
+-- Name: generated_certificates_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.generated_certificates_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.generated_certificates_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3252 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: generated_certificates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.generated_certificates_id_seq OWNED BY public.generated_certificates.id;
+
+
+--
+-- TOC entry 235 (class 1259 OID 100477)
+-- Name: grooms; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.grooms (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    prefix character varying(255) NOT NULL,
+    first_name character varying(255) NOT NULL,
+    middle_name character varying(255),
+    last_name character varying(255) NOT NULL,
+    father_prefix character varying(255) NOT NULL,
+    father_first_name character varying(255) NOT NULL,
+    father_middle_name character varying(255),
+    father_last_name character varying(255) NOT NULL,
+    mother_prefix character varying(255) NOT NULL,
+    mother_first_name character varying(255) NOT NULL,
+    mother_middle_name character varying(255),
+    mother_last_name character varying(255) NOT NULL,
+    status character varying(255) NOT NULL,
+    occupation character varying(255) NOT NULL,
+    dob character varying(255) NOT NULL,
+    phone character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    isdisability character varying(255) NOT NULL,
+    disability character varying(255),
+    present_country_id integer NOT NULL,
+    present_state_id integer,
+    present_province character varying(255),
+    present_district integer,
+    present_villagetowncity character varying(255) NOT NULL,
+    present_policestation character varying(255),
+    present_postoffice character varying(255),
+    present_addressline1 character varying(255),
+    present_addressline2 character varying(255),
+    present_pincode character varying(255) NOT NULL,
+    present_lac character varying(255) NOT NULL,
+    present_residencyperiodmonth character varying(255) NOT NULL,
+    present_residencyperiodyear character varying(255) NOT NULL,
+    is_permanent_same_as_present character varying(255) NOT NULL,
+    permanent_country_id integer NOT NULL,
+    permanent_state_id integer,
+    permanent_province character varying(255),
+    permanent_district integer,
+    permanent_villagetowncity character varying(255) NOT NULL,
+    permanent_policestation character varying(255),
+    permanent_post_office character varying(255),
+    permanent_addressline1 character varying(255),
+    permanent_addressline2 character varying(255),
+    permanent_pincode character varying(255) NOT NULL,
+    permanent_lac character varying(255) NOT NULL,
+    permanent_residencyperiodmonth character varying(255) NOT NULL,
+    permanent_residencyperiodyear character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.grooms OWNER TO postgres;
+
+--
+-- TOC entry 234 (class 1259 OID 100475)
+-- Name: grooms_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.grooms_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.grooms_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3253 (class 0 OID 0)
+-- Dependencies: 234
+-- Name: grooms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.grooms_id_seq OWNED BY public.grooms.id;
+
+
+--
+-- TOC entry 209 (class 1259 OID 99985)
+-- Name: igrs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.igrs (
+    id integer NOT NULL,
+    userid character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    office_name character varying(255) NOT NULL,
+    office_address character varying(255) NOT NULL,
+    phone character varying(255) NOT NULL,
+    email character varying(255),
+    status boolean DEFAULT true NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.igrs OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 99983)
+-- Name: igrs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.igrs_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.igrs_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3254 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: igrs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.igrs_id_seq OWNED BY public.igrs.id;
+
+
+--
+-- TOC entry 227 (class 1259 OID 100430)
+-- Name: image_captures; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.image_captures (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    image_path character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.image_captures OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1259 OID 100428)
+-- Name: image_captures_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.image_captures_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.image_captures_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3255 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: image_captures_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.image_captures_id_seq OWNED BY public.image_captures.id;
+
+
+--
+-- TOC entry 207 (class 1259 OID 99936)
+-- Name: kazis; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.kazis (
+    id integer NOT NULL,
+    userid character varying(255) NOT NULL,
+    district_id integer NOT NULL,
+    office_name character varying(255) NOT NULL,
+    office_address character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    phone character varying(255) NOT NULL,
+    email character varying(255),
+    assosciated_sro text DEFAULT '[]'::text NOT NULL,
+    document_path character varying(255),
+    status boolean DEFAULT true NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.kazis OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 99934)
+-- Name: kazis_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.kazis_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.kazis_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3256 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: kazis_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.kazis_id_seq OWNED BY public.kazis.id;
+
+
+--
+-- TOC entry 237 (class 1259 OID 100488)
+-- Name: other_details; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.other_details (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    lawyer_prefix character varying(255) NOT NULL,
+    lawyer_first_name character varying(255) NOT NULL,
+    lawyer_middle_name character varying(255),
+    lawyer_last_name character varying(255) NOT NULL,
+    lawyer_gender character varying(255) NOT NULL,
+    lawyer_phone character varying(255) NOT NULL,
+    lawyer_state integer NOT NULL,
+    lawyer_district integer NOT NULL,
+    lawyer_villagetowncity character varying(255) NOT NULL,
+    lawyer_policestation character varying(255) NOT NULL,
+    lawyer_postoffice character varying(255) NOT NULL,
+    lawyer_pincode character varying(255) NOT NULL,
+    witness1_prefix character varying(255) NOT NULL,
+    witness1_first_name character varying(255) NOT NULL,
+    witness1_middle_name character varying(255),
+    witness1_last_name character varying(255) NOT NULL,
+    witness1_gender character varying(255) NOT NULL,
+    witness1_phone character varying(255) NOT NULL,
+    witness1_state integer NOT NULL,
+    witness1_district integer NOT NULL,
+    witness1_villagetowncity character varying(255) NOT NULL,
+    witness1_policestation character varying(255) NOT NULL,
+    witness1_postoffice character varying(255) NOT NULL,
+    witness1_pincode character varying(255) NOT NULL,
+    witness2_prefix character varying(255) NOT NULL,
+    witness2_first_name character varying(255) NOT NULL,
+    witness2_middle_name character varying(255),
+    witness2_last_name character varying(255) NOT NULL,
+    witness2_gender character varying(255) NOT NULL,
+    witness2_phone character varying(255) NOT NULL,
+    witness2_state integer NOT NULL,
+    witness2_district integer NOT NULL,
+    witness2_villagetowncity character varying(255) NOT NULL,
+    witness2_policestation character varying(255) NOT NULL,
+    witness2_postoffice character varying(255) NOT NULL,
+    witness2_pincode character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.other_details OWNER TO postgres;
+
+--
+-- TOC entry 236 (class 1259 OID 100486)
+-- Name: other_details_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.other_details_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.other_details_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3257 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: other_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.other_details_id_seq OWNED BY public.other_details.id;
+
+
+--
+-- TOC entry 239 (class 1259 OID 100499)
+-- Name: query_logs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.query_logs (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    query_text character varying(255) NOT NULL,
+    is_verified integer DEFAULT 0 NOT NULL,
+    sent_timestamp timestamp with time zone NOT NULL,
+    recieved_timestamp timestamp with time zone,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.query_logs OWNER TO postgres;
+
+--
+-- TOC entry 238 (class 1259 OID 100497)
+-- Name: query_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.query_logs_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.query_logs_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3258 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: query_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.query_logs_id_seq OWNED BY public.query_logs.id;
+
+
+--
+-- TOC entry 201 (class 1259 OID 99648)
+-- Name: roles; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.roles (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.roles OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 99646)
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.roles_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.roles_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3259 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.roles_id_seq OWNED BY public.roles.id;
+
+
+--
+-- TOC entry 213 (class 1259 OID 100034)
+-- Name: sros; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sros (
+    id integer NOT NULL,
+    userid character varying(255) NOT NULL,
+    district_id integer NOT NULL,
+    office_name character varying(255) NOT NULL,
+    office_address character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    phone character varying(255),
+    email character varying(255),
+    status boolean DEFAULT true NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.sros OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 100032)
+-- Name: sros_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.sros_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sros_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3260 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: sros_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.sros_id_seq OWNED BY public.sros.id;
+
+
+--
+-- TOC entry 217 (class 1259 OID 100105)
+-- Name: states; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.states (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.states OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 100103)
+-- Name: states_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.states_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.states_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3261 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: states_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.states_id_seq OWNED BY public.states.id;
+
+
+--
+-- TOC entry 221 (class 1259 OID 100149)
+-- Name: tests; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tests (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.tests OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 100147)
+-- Name: tests_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tests_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tests_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3262 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tests_id_seq OWNED BY public.tests.id;
+
+
+--
+-- TOC entry 241 (class 1259 OID 100511)
+-- Name: upload_certificates; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.upload_certificates (
+    id integer NOT NULL,
+    application_id character varying(255) NOT NULL,
+    certificate_path character varying(255) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.upload_certificates OWNER TO postgres;
+
+--
+-- TOC entry 240 (class 1259 OID 100509)
+-- Name: upload_certificates_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.upload_certificates_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.upload_certificates_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3263 (class 0 OID 0)
+-- Dependencies: 240
+-- Name: upload_certificates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.upload_certificates_id_seq OWNED BY public.upload_certificates.id;
+
+
+--
+-- TOC entry 203 (class 1259 OID 99849)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    userid character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    role integer NOT NULL,
+    status boolean DEFAULT true NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 99847)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3264 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- TOC entry 2991 (class 2604 OID 99914)
+-- Name: aigrs id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.aigrs ALTER COLUMN id SET DEFAULT nextval('public.aigrs_id_seq'::regclass);
+
+
+--
+-- TOC entry 3011 (class 2604 OID 100411)
+-- Name: applicants id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.applicants ALTER COLUMN id SET DEFAULT nextval('public.applicants_id_seq'::regclass);
+
+
+--
+-- TOC entry 3012 (class 2604 OID 100422)
+-- Name: brides id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.brides ALTER COLUMN id SET DEFAULT nextval('public.brides_id_seq'::regclass);
+
+
+--
+-- TOC entry 3004 (class 2604 OID 100061)
+-- Name: countries id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.countries ALTER COLUMN id SET DEFAULT nextval('public.countries_id_seq'::regclass);
+
+
+--
+-- TOC entry 2998 (class 2604 OID 100013)
+-- Name: dcs id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.dcs ALTER COLUMN id SET DEFAULT nextval('public.dcs_id_seq'::regclass);
+
+
+--
+-- TOC entry 3008 (class 2604 OID 100131)
+-- Name: districts id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.districts ALTER COLUMN id SET DEFAULT nextval('public.districts_id_seq'::regclass);
+
+
+--
+-- TOC entry 3014 (class 2604 OID 100444)
+-- Name: documents id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.documents ALTER COLUMN id SET DEFAULT nextval('public.documents_id_seq'::regclass);
+
+
+--
+-- TOC entry 3015 (class 2604 OID 100455)
+-- Name: forms id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.forms ALTER COLUMN id SET DEFAULT nextval('public.forms_id_seq'::regclass);
+
+
+--
+-- TOC entry 3019 (class 2604 OID 100469)
+-- Name: generated_certificates id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.generated_certificates ALTER COLUMN id SET DEFAULT nextval('public.generated_certificates_id_seq'::regclass);
+
+
+--
+-- TOC entry 3020 (class 2604 OID 100480)
+-- Name: grooms id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.grooms ALTER COLUMN id SET DEFAULT nextval('public.grooms_id_seq'::regclass);
+
+
+--
+-- TOC entry 2996 (class 2604 OID 99988)
+-- Name: igrs id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.igrs ALTER COLUMN id SET DEFAULT nextval('public.igrs_id_seq'::regclass);
+
+
+--
+-- TOC entry 3013 (class 2604 OID 100433)
+-- Name: image_captures id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.image_captures ALTER COLUMN id SET DEFAULT nextval('public.image_captures_id_seq'::regclass);
+
+
+--
+-- TOC entry 2993 (class 2604 OID 99939)
+-- Name: kazis id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.kazis ALTER COLUMN id SET DEFAULT nextval('public.kazis_id_seq'::regclass);
+
+
+--
+-- TOC entry 3021 (class 2604 OID 100491)
+-- Name: other_details id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.other_details ALTER COLUMN id SET DEFAULT nextval('public.other_details_id_seq'::regclass);
+
+
+--
+-- TOC entry 3022 (class 2604 OID 100502)
+-- Name: query_logs id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.query_logs ALTER COLUMN id SET DEFAULT nextval('public.query_logs_id_seq'::regclass);
+
+
+--
+-- TOC entry 2988 (class 2604 OID 99651)
+-- Name: roles id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.roles ALTER COLUMN id SET DEFAULT nextval('public.roles_id_seq'::regclass);
+
+
+--
+-- TOC entry 3000 (class 2604 OID 100037)
+-- Name: sros id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sros ALTER COLUMN id SET DEFAULT nextval('public.sros_id_seq'::regclass);
+
+
+--
+-- TOC entry 3005 (class 2604 OID 100108)
+-- Name: states id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.states ALTER COLUMN id SET DEFAULT nextval('public.states_id_seq'::regclass);
+
+
+--
+-- TOC entry 3010 (class 2604 OID 100152)
+-- Name: tests id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tests ALTER COLUMN id SET DEFAULT nextval('public.tests_id_seq'::regclass);
+
+
+--
+-- TOC entry 3024 (class 2604 OID 100514)
+-- Name: upload_certificates id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.upload_certificates ALTER COLUMN id SET DEFAULT nextval('public.upload_certificates_id_seq'::regclass);
+
+
+--
+-- TOC entry 2989 (class 2604 OID 99852)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 3202 (class 0 OID 99911)
+-- Dependencies: 205
+-- Data for Name: aigrs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.aigrs (id, userid, district_id, name, office_name, office_address, phone, email, status, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3220 (class 0 OID 100408)
+-- Dependencies: 223
+-- Data for Name: applicants; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.applicants (id, application_id, prefix, first_name, middle_name, last_name, phone, email, gender, district_id, office_id, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	Mr.	Rajkumar		Chhetri	7894561230	test@gmail.com	Male	2	1	2023-09-06 13:48:12.031+05:30	2023-09-06 13:48:12.031+05:30
+2	APPLICANT/2024/02	Mr.	Pushpa		Chhetri	7002925965	pushpachhetri5@gmail.com	Male	2	1	2024-06-27 16:53:17.041+05:30	2024-06-27 16:53:17.041+05:30
+\.
+
+
+--
+-- TOC entry 3222 (class 0 OID 100419)
+-- Dependencies: 225
+-- Data for Name: brides; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.brides (id, application_id, prefix, first_name, middle_name, last_name, father_prefix, father_first_name, father_middle_name, father_last_name, mother_prefix, mother_first_name, mother_middle_name, mother_last_name, status, occupation, dob, phone, email, isdisability, disability, present_country_id, present_state_id, present_province, present_district, present_villagetowncity, present_policestation, present_postoffice, present_addressline1, present_addressline2, present_pincode, present_lac, present_residencyperiodmonth, present_residencyperiodyear, is_permanent_same_as_present, permanent_country_id, permanent_state_id, permanent_province, permanent_district, permanent_villagetowncity, permanent_policestation, permanent_post_office, permanent_addressline1, permanent_addressline2, permanent_pincode, permanent_lac, permanent_residencyperiodmonth, permanent_residencyperiodyear, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	Mrs.	Janna	Dennis Oneal	Brock	Mr.	Joan	Aspen Cross	Allison	Mrs.	Tanya	Felix Duffy	Adams	Unmarried	Private Service	1977-04-30	55	guda@mailinator.com	No	\N	2	\N	test	\N	test			test	test	123456	LAC	January	1974	yes	2	\N	test	\N	test			test	test	123456	LAC	January	1974	2023-09-06 13:48:12.038+05:30	2023-09-06 13:48:12.038+05:30
+2	APPLICANT/2024/02	Mrs.	Pushpa		Chhetri	Mr.	Pushpak		Chhetri	Mrs.	Pushpa		Chhetri	Unmarried	Govt. Service	2006-06-26	7002925965	pushpachhetri5@gmail.com	No	\N	1	4		2	adsa	asdasd	asdasd			123123	LAC	January	1995	yes	1	4		2	adsa	asdasd	asdasd			123123	LAC	January	1995	2024-06-27 16:53:17.047+05:30	2024-06-27 16:53:17.047+05:30
+\.
+
+
+--
+-- TOC entry 3212 (class 0 OID 100058)
+-- Dependencies: 215
+-- Data for Name: countries; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.countries (id, name, created_at, updated_at) FROM stdin;
+1	India	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+2	Afghanistan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+3	Åland Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+4	Albania	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+5	Algeria	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+6	American Samoa	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+7	Andorra	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+8	Angola	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+9	Anguilla	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+10	Antarctica	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+11	Antigua and Barbuda	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+12	Argentina	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+13	Armenia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+14	Aruba	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+15	Australia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+16	Austria	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+17	Azerbaijan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+18	Bahrain	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+19	Bahamas	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+20	Bangladesh	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+21	Barbados	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+22	Belarus	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+23	Belgium	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+24	Belize	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+25	Benin	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+26	Bermuda	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+27	Bhutan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+28	Bolivia, Plurinational State of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+29	Bonaire, Sint Eustatius and Saba	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+30	Bosnia and Herzegovina	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+31	Botswana	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+32	Bouvet Island	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+33	Brazil	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+34	British Indian Ocean Territory	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+35	Brunei Darussalam	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+36	Bulgaria	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+37	Burkina Faso	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+38	Burundi	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+39	Cambodia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+40	Cameroon	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+41	Canada	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+42	Cape Verde	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+43	Cayman Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+44	Central African Republic	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+45	Chad	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+46	Chile	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+47	China	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+48	Christmas Island	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+49	Cocos (Keeling) Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+50	Colombia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+51	Comoros	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+52	Congo	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+53	Congo, the Democratic Republic of the	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+54	Cook Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+55	Costa Rica	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+56	Côte d Ivoire	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+57	Croatia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+58	Cuba	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+59	Curaçao	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+60	Cyprus	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+61	Czech Republic	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+62	Denmark	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+63	Djibouti	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+64	Dominica	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+65	Dominican Republic	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+66	Ecuador	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+67	Egypt	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+68	El Salvador	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+69	Equatorial Guinea	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+70	Eritrea	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+71	Estonia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+72	Ethiopia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+73	Falkland Islands (Malvinas)	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+74	Faroe Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+75	Fiji	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+76	Finland	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+77	France	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+78	French Guiana	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+79	French Polynesia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+80	French Southern Territories	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+81	Gabon	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+82	Gambia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+83	Georgia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+84	Germany	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+85	Ghana	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+86	Gibraltar	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+87	Greece	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+88	Greenland	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+89	Grenada	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+90	Guadeloupe	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+91	Guam	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+92	Guatemala	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+93	Guernsey	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+94	Guinea	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+95	Guinea-Bissau	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+96	Guyana	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+97	Haiti	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+98	Heard Island and McDonald Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+99	Holy See (Vatican City State)	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+100	Honduras	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+101	Hong Kong	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+102	Hungary	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+103	Iceland	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+104	Indonesia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+105	Iran, Islamic Republic of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+106	Iraq	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+107	Ireland	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+108	Isle of Man	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+109	Israel	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+110	Italy	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+111	Jamaica	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+112	Japan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+113	Jersey	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+114	Jordan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+115	Kazakhstan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+116	Kenya	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+117	Kiribati	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+118	Korea, Democratic Peoples Republic of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+119	Korea, Republic of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+120	Kuwait	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+121	Kyrgyzstan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+122	Lao Peoples Democratic Republic	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+123	Latvia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+124	Lebanon	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+125	Lesotho	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+126	Liberia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+127	Libya	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+128	Liechtenstein	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+129	Lithuania	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+130	Luxembourg	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+131	Macao	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+132	Macedonia, the Former Yugoslav Republic of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+133	Madagascar	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+134	Malawi	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+135	Malaysia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+136	Maldives	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+137	Mali	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+138	Malta	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+139	Marshall Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+140	Martinique	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+141	Mauritania	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+142	Mauritius	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+143	Mayotte	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+144	Mexico	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+145	Micronesia, Federated States of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+146	Moldova, Republic of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+147	Monaco	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+148	Mongolia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+149	Montenegro	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+150	Montserrat	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+151	Morocco	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+152	Mozambique	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+153	Myanmar	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+154	Namibia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+155	Nauru	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+156	Nepal	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+157	Netherlands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+158	New Caledonia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+159	New Zealand	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+160	Nicaragua	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+161	Niger	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+162	Nigeria	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+163	Niue	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+164	Norfolk Island	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+165	Northern Mariana Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+166	Norway	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+167	Oman	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+168	Pakistan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+169	Palau	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+170	Palestine, State of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+171	Panama	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+172	Papua New Guinea	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+173	Paraguay	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+174	Peru	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+175	Philippines	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+176	Pitcairn	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+177	Poland	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+178	Portugal	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+179	Puerto Rico	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+180	Qatar	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+181	Réunion	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+182	Romania	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+183	Russian Federation	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+184	Rwanda	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+185	Saint Barthélemy	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+186	Saint Helena, Ascension and Tristan da Cunha	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+187	Saint Kitts and Nevis	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+188	Saint Lucia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+189	Saint Martin (French part)	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+190	Saint Pierre and Miquelon	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+191	Saint Vincent and the Grenadines	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+192	Samoa	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+193	San Marino	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+194	Sao Tome and Principe	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+195	Saudi Arabia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+196	Senegal	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+197	Serbia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+198	Seychelles	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+199	Sierra Leone	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+200	Singapore	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+201	Sint Maarten (Dutch part)	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+202	Slovakia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+203	Slovenia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+204	Solomon Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+205	Somalia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+206	South Africa	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+207	South Georgia and the South Sandwich Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+208	South Sudan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+209	Spain	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+210	Sri Lanka	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+211	Sudan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+212	Suriname	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+213	Svalbard and Jan Mayen	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+214	Swaziland	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+215	Sweden	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+216	Switzerland	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+217	Syrian Arab Republic	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+218	Taiwan, Province of China	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+219	Tajikistan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+220	Tanzania, United Republic of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+221	Thailand	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+222	Timor-Leste	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+223	Togo	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+224	Tokelau	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+225	Tonga	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+226	Trinidad and Tobago	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+227	Tunisia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+228	Turkey	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+229	Turkmenistan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+230	Turks and Caicos Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+231	Tuvalu	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+232	Uganda	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+233	Ukraine	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+234	United Arab Emirates	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+235	United Kingdom	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+236	United States	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+237	United States Minor Outlying Islands	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+238	Uruguay	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+239	Uzbekistan	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+240	Vanuatu	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+241	Venezuela, Bolivarian Republic of	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+242	Viet Nam	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+243	Virgin Islands, British	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+244	Virgin Islands, U.S.	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+245	Wallis and Futuna	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+246	Western Sahara	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+247	Yemen	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+248	Zambia	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+249	Zimbabwe	2023-07-27 16:25:21.739235+05:30	2023-07-27 16:25:21.739235+05:30
+\.
+
+
+--
+-- TOC entry 3208 (class 0 OID 100010)
+-- Dependencies: 211
+-- Data for Name: dcs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.dcs (id, userid, district_id, name, office_name, office_address, phone, email, status, created_at, updated_at) FROM stdin;
+1	DC1	1	DC Bajali	Bajali	DC Office Bajali	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+2	DC2	2	DC Baksa	Baksa	DC Office Baksa	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+3	DC3	3	DC Barpeta	Barpeta	DC Office Barpeta	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+4	DC4	4	DC Biswanath	Biswanath	DC Office Biswanath	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+5	DC5	5	DC Bongaigaon	Bongaigaon	DC Office Bongaigaon	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+6	DC6	6	DC Cachar	Cachar	DC Office Cachar	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+7	DC7	7	DC Charaideo	Charaideo	DC Office Charaideo	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+8	DC8	8	DC Chirang	Chirang	DC Office Chirang	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+9	DC9	9	DC Darrang	Darrang	DC Office Darrang	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+10	DC10	10	DC Dhemaji	Dhemaji	DC Office Dhemaji	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+11	DC11	11	DC Dhubri	Dhubri	DC Office Dhubri	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+12	DC12	12	DC Dibrugarh	Dibrugarh	DC Office Dibrugarh	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+13	DC13	13	DC Dima Hasao	Dima Hasao	DC Office Dima Hasao	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+14	DC14	14	DC Goalpara	Goalpara	DC Office Goalpara	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+15	DC15	15	DC Golaghat	Golaghat	DC Office Golaghat	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+16	DC16	16	DC Hailakandi	Hailakandi	DC Office Hailakandi	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+17	DC17	17	DC Hojai	Hojai	DC Office Hojai	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+18	DC18	18	DC Jorhat	Jorhat	DC Office Jorhat	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+19	DC19	19	DC Kamrup	Kamrup	DC Office Kamrup	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+20	DC20	20	DC Kamrup Metropolitan	Kamrup Metropolitan	DC Office Kamrup Metropolitan	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+21	DC21	21	DC Karbi Anglong	Karbi Anglong	DC Office Karbi Anglong	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+22	DC22	22	DC Karimganj	Karimganj	DC Office Karimganj	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+23	DC23	23	DC Kokrajhar	Kokrajhar	DC Office Kokrajhar	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+24	DC24	24	DC Lakhimpur	Lakhimpur	DC Office Lakhimpur	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+25	DC25	25	DC Majuli	Majuli	DC Office Majuli	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+26	DC26	26	DC Morigaon	Morigaon	DC Office Morigaon	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+27	DC27	27	DC Nagaon	Nagaon	DC Office Nagaon	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+28	DC28	28	DC Nalbari	Nalbari	DC Office Nalbari	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+29	DC29	29	DC Sivasagar	Sivasagar	DC Office Sivasagar	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+30	DC30	30	DC Sonitpur	Sonitpur	DC Office Sonitpur	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+31	DC31	31	DC South Salmara Mankachar	South Salmara Mankachar	DC Office South Salmara Mankachar	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+32	DC32	32	DC Tamulpur	Tamulpur	DC Office Tamulpur	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+33	DC33	33	DC Tinsukia	Tinsukia	DC Office Tinsukia	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+34	DC34	34	DC Udalguri	Udalguri	DC Office Udalguri	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+35	DC35	35	DC West Karbi Anglong	West Karbi Anglong	DC Office West Karbi Anglong	\N	\N	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+\.
+
+
+--
+-- TOC entry 3216 (class 0 OID 100128)
+-- Dependencies: 219
+-- Data for Name: districts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.districts (id, name, lgd_code, state_id, dist_code, status, created_at, updated_at) FROM stdin;
+1	Bajali	739	4	0	f	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+2	Baksa	616	4	26	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+3	Barpeta	280	4	5	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+4	Biswanath	705	4	35	f	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+5	Bongaigaon	281	4	13	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+6	Cachar	282	4	23	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+7	Charaideo	708	4	37	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+8	Chirang	612	4	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+9	Darrang	283	4	8	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+10	Dhemaji	284	4	25	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+11	Dhubri	285	4	2	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+12	Dibrugarh	286	4	17	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+13	Dima Hasao	299	4	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+14	Goalpara	287	4	3	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+15	Golaghat	288	4	14	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+16	Hailakandi	289	4	22	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+17	Hojai	709	4	36	f	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+18	Jorhat	290	4	15	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+19	Kamrup	291	4	7	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+20	Kamrup Metro	618	4	24	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+21	Karbi Anglong	292	4	0	f	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+22	Karimganj	293	4	21	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+23	Kokrajhar	294	4	1	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+24	Lakhimpur	295	4	12	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+25	Majuli	706	4	34	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+26	Morigaon	296	4	32	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+27	Nagaon	297	4	33	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+28	Nalbari	298	4	6	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+29	Sivasagar	300	4	16	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+30	Sonitpur	301	4	11	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+31	South Salmara Mancachar	707	4	0	f	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+32	Tamulpur	756	4	0	f	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+33	Tinsukia	302	4	18	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+34	Udalguri	617	4	27	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+35	West Karbi Anglong	710	4	0	f	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+36	 Nicobar	0	1	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+37	 North Middle Andaman	0	1	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+38	 South Andaman	0	1	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+39	 Alluri Sitarama Raju	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+40	 Anakapalli	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+41	 Anantapur	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+42	 Annamaya	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+43	 Bapatla	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+44	 Chittoor	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+45	 East Godavari	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+46	 Eluru	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+47	 Guntur	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+48	 Kadapa	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+49	 Kakinada 	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+50	 Konaseema	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+51	 Krishna	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+52	 Kurnool	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+53	 Manyam	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+54	 N T Rama Rao	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+55	 Nandyal	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+56	 Nellore	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+57	 Palnadu	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+58	 Prakasam	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+59	 Sri Balaji	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+60	 Sri Satya Sai	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+61	 Srikakulam	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+62	 Visakhapatnam	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+63	 Vizianagaram	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+64	 West Godavari	0	2	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+65	 Anjaw	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+66	 Central Siang	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+67	 Changlang	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+68	 Dibang Valley	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+69	 East Kameng	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+70	 East Siang	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+71	 Kamle	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+72	 Kra Daadi	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+73	 Kurung Kumey	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+74	 Lepa Rada	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+75	 Lohit	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+76	 Longding	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+77	 Lower Dibang Valley	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+78	 Lower Siang	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+79	 Lower Subansiri	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+80	 Namsai	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+81	 Pakke Kessang	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+82	 Papum Pare	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+83	 Shi Yomi	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+84	 Tawang	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+85	 Tirap	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+86	 Upper Siang	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+87	 Upper Subansiri	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+88	 West Kameng	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+89	 West Siang	0	3	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+90	 Araria	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+91	 Arwal	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+92	 Aurangabad	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+93	 Banka	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+94	 Begusarai	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+95	 Bhagalpur	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+96	 Bhojpur	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+97	 Buxar	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+98	 Darbhanga	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+99	 East Champaran	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+100	 Gaya	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+101	 Gopalganj	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+102	 Jamui	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+103	 Jehanabad	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+104	 Kaimur	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+105	 Katihar	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+106	 Khagaria	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+107	 Kishanganj	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+108	 Lakhisarai	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+109	 Madhepura	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+110	 Madhubani	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+111	 Munger	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+112	 Muzaffarpur	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+113	 Nalanda	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+114	 Nawada	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+115	 Patna	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+116	 Purnia	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+117	 Rohtas	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+118	 Saharsa	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+119	 Samastipur	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+120	 Saran	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+121	 Sheikhpura	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+122	 Sheohar	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+123	 Sitamarhi	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+124	 Siwan	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+125	 Supaul	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+126	 Vaishali	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+127	 West Champaran	0	5	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+128	 Chandigarh	0	6	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+129	 Balod	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+130	 Baloda Bazar	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+131	 Balrampur	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+132	 Bastar	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+133	 Bemetara	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+134	 Bijapur	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+135	 Bilaspur	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+136	 Dantewada	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+137	 Dhamtari	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+138	 Durg	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+139	 Gariaband	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+140	 Gaurela Pendra Marwahi	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+141	 Janjgir Champa	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+142	 Jashpur	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+143	 Kabirdham	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+144	 Kanker	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+145	 Khairagarh	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+146	 Kondagaon	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+147	 Korba	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+148	 Koriya	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+149	 Mahasamund	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+150	 Manendragarh	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+151	 Mohla Manpur	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+152	 Mungeli	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+153	 Narayanpur	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+154	 Raigarh	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+155	 Raipur	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+156	 Rajnandgaon	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+157	 Sakti	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+158	 Sarangarh Bilaigarh	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+159	 Sukma	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+160	 Surajpur	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+161	 Surguja	0	7	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+162	 Dadra and Nagar Haveli	0	8	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+163	 Daman	0	8	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+164	 Diu	0	8	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+165	 Central Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+166	 East Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+167	 New Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+168	 North Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+169	 North East Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+170	 North West Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+171	 Shahdara	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+172	 South Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+173	 South East Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+174	 South West Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+175	 West Delhi	0	9	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+176	 North Goa	0	10	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+177	 South Goa	0	10	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+178	 Ahmedabad	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+179	 Amreli	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+180	 Anand	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+181	 Aravalli	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+182	 Banaskantha	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+183	 Bharuch	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+184	 Bhavnagar	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+185	 Botad	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+186	 Chhota Udaipur	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+187	 Dahod	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+188	 Dang	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+189	 Devbhoomi Dwarka	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+190	 Gandhinagar	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+191	 Gir Somnath	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+192	 Jamnagar	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+193	 Junagadh	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+194	 Kheda	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+195	 Kutch	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+196	 Mahisagar	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+197	 Mehsana	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+198	 Morbi	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+199	 Narmada	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+200	 Navsari	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+201	 Panchmahal	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+202	 Patan	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+203	 Porbandar	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+204	 Rajkot	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+205	 Sabarkantha	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+206	 Surat	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+207	 Surendranagar	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+208	 Tapi	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+209	 Vadodara	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+210	 Valsad	0	11	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+211	 Ambala	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+212	 Bhiwani	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+213	 Charkhi Dadri	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+214	 Faridabad	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+215	 Fatehabad	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+216	 Gurugram	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+217	 Hisar	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+218	 Jhajjar	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+219	 Jind	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+220	 Kaithal	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+221	 Karnal	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+222	 Kurukshetra	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+223	 Mahendragarh	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+224	 Mewat	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+225	 Palwal	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+226	 Panchkula	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+227	 Panipat	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+228	 Rewari	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+229	 Rohtak	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+230	 Sirsa	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+231	 Sonipat	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+232	 Yamunanagar	0	12	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+233	 Bilaspur	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+234	 Chamba	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+235	 Hamirpur	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+236	 Kangra	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+237	 Kinnaur	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+238	 Kullu	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+239	 Lahaul Spiti	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+240	 Mandi	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+241	 Shimla	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+242	 Sirmaur	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+243	 Solan	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+244	 Una	0	13	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+245	 Anantnag	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+246	 Bandipora	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+247	 Baramulla	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+248	 Budgam	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+249	 Doda	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+250	 Ganderbal	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+251	 Jammu	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+252	 Kathua	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+253	 Kishtwar	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+254	 Kulgam	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+255	 Kupwara	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+256	 Poonch	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+257	 Pulwama	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+258	 Rajouri	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+259	 Ramban	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+260	 Reasi	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+261	 Samba	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+262	 Shopian	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+263	 Srinagar	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+264	 Udhampur	0	14	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+265	 Bokaro	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+266	 Chatra	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+267	 Deoghar	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+268	 Dhanbad	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+269	 Dumka	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+270	 East Singhbhum	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+271	 Garhwa	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+272	 Giridih	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+273	 Godda	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+274	 Gumla	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+275	 Hazaribagh	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+276	 Jamtara	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+277	 Khunti	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+278	 Koderma	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+279	 Latehar	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+280	 Lohardaga	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+281	 Pakur	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+282	 Palamu	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+283	 Ramgarh	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+284	 Ranchi	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+285	 Sahebganj	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+286	 Seraikela Kharsawan	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+287	 Simdega	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+288	 West Singhbhum	0	15	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+289	 Bagalkot	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+290	 Bangalore Rural	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+291	 Bangalore Urban	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+292	 Belgaum	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+293	 Bellary	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+294	 Bidar	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+295	 Chamarajanagar	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+296	 Chikkaballapur	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+297	 Chikkamagaluru	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+298	 Chitradurga	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+299	 Dakshina Kannada	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+300	 Davanagere	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+301	 Dharwad	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+302	 Gadag	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+303	 Gulbarga	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+304	 Hassan	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+305	 Haveri	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+306	 Kodagu	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+307	 Kolar	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+308	 Koppal	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+309	 Mandya	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+310	 Mysore	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+311	 Raichur	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+312	 Ramanagara	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+313	 Shimoga	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+314	 Tumkur	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+315	 Udupi	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+316	 Uttara Kannada	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+317	 Vijayanagara	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+318	 Vijayapura 	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+319	 Yadgir	0	16	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+320	 Alappuzha	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+321	 Ernakulam	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+322	 Idukki	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+323	 Kannur	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+324	 Kasaragod	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+325	 Kollam	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+326	 Kottayam	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+327	 Kozhikode	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+328	 Malappuram	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+329	 Palakkad	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+330	 Pathanamthitta	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+331	 Thiruvananthapuram	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+332	 Thrissur	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+333	 Wayanad	0	17	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+334	 Kargil	0	18	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+335	 Leh	0	18	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+336	 Lakshadweep	0	19	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+337	 Agar Malwa	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+338	 Alirajpur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+339	 Anuppur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+340	 Ashoknagar	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+341	 Balaghat	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+342	 Barwani	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+343	 Betul	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+344	 Bhind	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+345	 Bhopal	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+346	 Burhanpur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+347	 Chachaura	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+348	 Chhatarpur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+349	 Chhindwara	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+350	 Damoh	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+351	 Datia	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+352	 Dewas	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+353	 Dhar	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+354	 Dindori	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+355	 Guna	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+356	 Gwalior	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+357	 Harda	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+358	 Hoshangabad	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+359	 Indore	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+360	 Jabalpur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+361	 Jhabua	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+362	 Katni	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+363	 Khandwa	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+364	 Khargone	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+365	 Maihar	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+366	 Mandla	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+367	 Mandsaur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+368	 Morena	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+369	 Nagda	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+370	 Narsinghpur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+371	 Neemuch	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+372	 Niwari	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+373	 Panna	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+374	 Raisen	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+375	 Rajgarh	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+376	 Ratlam	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+377	 Rewa	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+378	 Sagar	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+379	 Satna	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+380	 Sehore	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+381	 Seoni	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+382	 Shahdol	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+383	 Shajapur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+384	 Sheopur	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+385	 Shivpuri	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+386	 Sidhi	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+387	 Singrauli	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+388	 Tikamgarh	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+389	 Ujjain	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+390	 Umaria	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+391	 Vidisha	0	20	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+392	 Ahmednagar	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+393	 Akola	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+394	 Amravati	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+395	 Aurangabad	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+396	 Beed	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+397	 Bhandara	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+398	 Buldhana	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+399	 Chandrapur	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+400	 Dhule	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+401	 Gadchiroli	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+402	 Gondia	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+403	 Hingoli	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+404	 Jalgaon	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+405	 Jalna	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+406	 Kolhapur	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+407	 Latur	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+408	 Mumbai City	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+409	 Mumbai Suburban	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+410	 Nagpur	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+411	 Nanded	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+412	 Nandurbar	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+413	 Nashik	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+414	 Osmanabad	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+415	 Palghar	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+416	 Parbhani	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+417	 Pune	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+418	 Raigad	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+419	 Ratnagiri	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+420	 Sangli	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+421	 Satara	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+422	 Sindhudurg	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+423	 Solapur	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+424	 Thane	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+425	 Wardha	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+426	 Washim	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+427	 Yavatmal	0	21	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+428	 Bishnupur	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+429	 Chandel	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+430	 Churachandpur	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+431	 Imphal East	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+432	 Imphal West	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+433	 Jiribam	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+434	 Kakching	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+435	 Kamjong	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+436	 Kangpokpi	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+437	 Noney	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+438	 Pherzawl	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+439	 Senapati	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+440	 Tamenglong	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+441	 Tengnoupal	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+442	 Thoubal	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+443	 Ukhrul	0	22	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+444	 East Garo Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+445	 East Jaintia Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+446	 East Khasi Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+447	 Mairang	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+448	 North Garo Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+449	 Ri Bhoi	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+450	 South Garo Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+451	 South West Garo Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+452	 South West Khasi Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+453	 West Garo Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+454	 West Jaintia Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+455	 West Khasi Hills	0	23	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+456	 Aizawl	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+457	 Champhai	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+458	 Hnahthial	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+459	 Khawzawl	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+460	 Kolasib	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+461	 Lawngtlai	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+462	 Lunglei	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+463	 Mamit	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+464	 Saiha	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+465	 Saitual	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+466	 Serchhip	0	24	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+467	 Chumukedima	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+468	 Dimapur	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+469	 Kiphire	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+470	 Kohima	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+471	 Longleng	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+472	 Mokokchung	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+473	 Mon	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+474	 Niuland	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+475	 Noklak	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+476	 Peren	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+477	 Phek	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+478	 Shamator	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+479	 Tseminyu	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+480	 Tuensang	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+481	 Wokha	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+482	 Zunheboto	0	25	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+483	 Angul	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+484	 Balangir	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+485	 Balasore	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+486	 Bargarh	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+487	 Bhadrak	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+488	 Boudh	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+489	 Cuttack	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+490	 Debagarh	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+491	 Dhenkanal	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+492	 Gajapati	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+493	 Ganjam	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+494	 Jagatsinghpur	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+495	 Jajpur	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+496	 Jharsuguda	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+497	 Kalahandi	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+498	 Kandhamal	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+499	 Kendrapara	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+500	 Kendujhar	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+501	 Khordha	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+502	 Koraput	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+503	 Malkangiri	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+504	 Mayurbhanj	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+505	 Nabarangpur	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+506	 Nayagarh	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+507	 Nuapada	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+508	 Puri	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+509	 Rayagada	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+510	 Sambalpur	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+511	 Subarnapur	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+512	 Sundergarh	0	26	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+513	 Karaikal	0	27	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+514	 Mahe	0	27	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+515	 Puducherry	0	27	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+516	 Yanam	0	27	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+517	 Amritsar	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+518	 Barnala	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+519	 Bathinda	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+520	 Faridkot	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+521	 Fatehgarh Sahib	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+522	 Fazilka	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+523	 Firozpur	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+524	 Gurdaspur	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+525	 Hoshiarpur	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+526	 Jalandhar	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+527	 Kapurthala	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+528	 Ludhiana	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+529	 Malerkotla	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+530	 Mansa	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+531	 Moga	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+532	 Mohali	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+533	 Muktsar	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+534	 Pathankot	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+535	 Patiala	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+536	 Rupnagar	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+537	 Sangrur	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+538	 Shaheed Bhagat Singh Nagar	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+539	 Tarn Taran	0	28	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+540	 Ajmer	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+541	 Alwar	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+542	 Banswara	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+543	 Baran	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+544	 Barmer	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+545	 Bharatpur	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+546	 Bhilwara	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+547	 Bikaner	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+548	 Bundi	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+549	 Chittorgarh	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+550	 Churu	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+551	 Dausa	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+552	 Dholpur	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+553	 Dungarpur	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+554	 Hanumangarh	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+555	 Jaipur	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+556	 Jaisalmer	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+557	 Jalore	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+558	 Jhalawar	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+559	 Jhunjhunu	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+560	 Jodhpur	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+561	 Karauli	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+562	 Kota	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+563	 Nagaur	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+564	 Pali	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+565	 Pratapgarh	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+566	 Rajsamand	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+567	 Sawai Madhopur	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+568	 Sikar	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+569	 Sirohi	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+570	 Sri Ganganagar	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+571	 Tonk	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+572	 Udaipur	0	29	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+573	 East Sikkim	0	30	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+574	 North Sikkim	0	30	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+575	 Pakyong	0	30	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+576	 Soreng	0	30	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+577	 South Sikkim	0	30	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+578	 West Sikkim	0	30	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+579	 Ariyalur	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+580	 Chengalpattu	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+581	 Chennai	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+582	 Coimbatore	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+583	 Cuddalore	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+584	 Dharmapuri	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+585	 Dindigul	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+586	 Erode	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+587	 Kallakurichi	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+588	 Kanchipuram	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+589	 Kanyakumari	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+590	 Karur	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+591	 Krishnagiri	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+592	 Madurai	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+593	 Mayiladuthurai 	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+594	 Nagapattinam	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+595	 Namakkal	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+596	 Nilgiris	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+597	 Perambalur	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+598	 Pudukkottai	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+599	 Ramanathapuram	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+600	 Ranipet	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+601	 Salem	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+602	 Sivaganga	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+603	 Tenkasi	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+604	 Thanjavur	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+605	 Theni	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+606	 Thoothukudi	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+607	 Tiruchirappalli	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+608	 Tirunelveli	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+609	 Tirupattur	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+610	 Tiruppur	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+611	 Tiruvallur	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+612	 Tiruvannamalai	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+613	 Tiruvarur	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+614	 Vellore	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+615	 Viluppuram	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+616	 Virudhunagar	0	31	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+617	 Adilabad	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+618	 Bhadradri Kothagudem	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+619	 Hanamkonda	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+620	 Hyderabad	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+621	 Jagtial	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+622	 Jangaon	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+623	 Jayashankar	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+624	 Jogulamba	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+625	 Kamareddy	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+626	 Karimnagar	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+627	 Khammam	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+628	 Komaram Bheem	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+629	 Mahabubabad	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+630	 Mahbubnagar	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+631	 Mancherial	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+632	 Medak	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+633	 Medchal	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+634	 Mulugu	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+635	 Nagarkurnool	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+636	 Nalgonda	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+637	 Narayanpet	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+638	 Nirmal	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+639	 Nizamabad	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+640	 Peddapalli	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+641	 Rajanna Sircilla	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+642	 Ranga Reddy	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+643	 Sangareddy	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+644	 Siddipet	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+645	 Suryapet	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+646	 Vikarabad	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+647	 Wanaparthy	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+648	 Warangal	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+649	 Yadadri Bhuvanagiri	0	32	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+650	 Dhalai	0	33	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+651	 Gomati	0	33	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+652	 Khowai	0	33	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+653	 North Tripura	0	33	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+654	 Sepahijala	0	33	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+655	 South Tripura	0	33	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+656	 Unakoti	0	33	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+657	 West Tripura	0	33	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+658	 Agra	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+659	 Aligarh	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+660	 Ambedkar Nagar	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+661	 Amethi	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+662	 Amroha	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+663	 Auraiya	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+664	 Ayodhya	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+665	 Azamgarh	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+666	 Baghpat	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+667	 Bahraich	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+668	 Ballia	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+669	 Balrampur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+670	 Banda	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+671	 Barabanki	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+672	 Bareilly	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+673	 Basti	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+674	 Bhadohi	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+675	 Bijnor	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+676	 Budaun	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+677	 Bulandshahr	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+678	 Chandauli	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+679	 Chitrakoot	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+680	 Deoria	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+681	 Etah	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+682	 Etawah	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+683	 Farrukhabad	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+684	 Fatehpur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+685	 Firozabad	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+686	 Gautam Buddha Nagar	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+687	 Ghaziabad	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+688	 Ghazipur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+689	 Gonda	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+690	 Gorakhpur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+691	 Hamirpur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+692	 Hapur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+693	 Hardoi	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+694	 Hathras	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+695	 Jalaun	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+696	 Jaunpur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+697	 Jhansi	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+698	 Kannauj	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+699	 Kanpur Dehat	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+700	 Kanpur Nagar	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+701	 Kasganj	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+702	 Kaushambi	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+703	 Kheri	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+704	 Kushinagar	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+705	 Lalitpur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+706	 Lucknow	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+707	 Maharajganj	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+708	 Mahoba	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+709	 Mainpuri	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+710	 Mathura	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+711	 Mau	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+712	 Meerut	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+713	 Mirzapur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+714	 Moradabad	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+715	 Muzaffarnagar	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+716	 Pilibhit	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+717	 Pratapgarh	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+718	 Prayagraj	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+719	 Raebareli	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+720	 Rampur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+721	 Saharanpur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+722	 Sambhal	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+723	 Sant Kabir Nagar	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+724	 Shahjahanpur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+725	 Shamli	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+726	 Shravasti	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+727	 Siddharthnagar	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+728	 Sitapur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+729	 Sonbhadra	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+730	 Sultanpur	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+731	 Unnao	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+732	 Varanasi	0	34	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+733	 Almora	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+734	 Bageshwar	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+735	 Chamoli	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+736	 Champawat	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+737	 Dehradun	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+738	 Haridwar	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+739	 Nainital	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+740	 Pauri	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+741	 Pithoragarh	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+742	 Rudraprayag	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+743	 Tehri	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+744	 Udham Singh Nagar	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+745	 Uttarkashi	0	35	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+746	 Alipurduar	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+747	 Bankura	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+748	 Birbhum	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+749	 Cooch Behar	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+750	 Dakshin Dinajpur	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+751	 Darjeeling	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+752	 Hooghly	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+753	 Howrah	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+754	 Jalpaiguri	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+755	 Jhargram	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+756	 Kalimpong	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+757	 Kolkata	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+758	 Malda	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+759	 Murshidabad	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+760	 Nadia	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+761	 North 24 Parganas	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+762	 Paschim Bardhaman	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+763	 Paschim Medinipur	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+764	 Purba Bardhaman	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+765	 Purba Medinipur	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+766	 Purulia	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+767	 South 24 Parganas	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+768	 Uttar Dinajpur	0	36	0	t	2023-07-02 00:53:46.9+05:30	2023-07-02 00:53:46.9+05:30
+\.
+
+
+--
+-- TOC entry 3226 (class 0 OID 100441)
+-- Dependencies: 229
+-- Data for Name: documents; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.documents (id, application_id, bride_identity_type, bride_identity_doc, groom_identity_type, groom_identity_doc, bride_age_type, bride_age_doc, groom_age_type, groom_age_doc, bride_present_address_type, bride_present_address_doc, groom_present_address_type, groom_present_address_doc, bride_permanent_address_type, bride_permanent_address_doc, groom_permanent_address_type, groom_permanent_address_doc, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	Driving Licence	/upload/doc/1693988291946.pdf	Driving Licence	/upload/doc/1693988291948.pdf	Birth Certificate	/upload/doc/1693988291948.pdf	Birth Certificate	/upload/doc/1693988291949.pdf	Telephone Bill	/upload/doc/1693988291949.pdf	Telephone Bill	/upload/doc/1693988291949.pdf	Photocopy of Bank Pass Book of the Applicant	/upload/doc/1693988291949.pdf	Copy of Passport	/upload/doc/1693988291949.pdf	2023-09-06 13:48:12.072+05:30	2023-09-06 13:48:12.072+05:30
+2	APPLICANT/2024/02	Driving Licence	/upload/doc/1719487396975.pdf	Voter Id	/upload/doc/1719487396976.pdf	Birth Certificate	/upload/doc/1719487396976.pdf	Birth Certificate	/upload/doc/1719487396976.pdf	Telephone Bill	/upload/doc/1719487396976.pdf	Telephone Bill	/upload/doc/1719487396977.pdf	Copy of Passport	/upload/doc/1719487396977.pdf	Telephone Bill	/upload/doc/1719487396977.pdf	2024-06-27 16:53:17.071+05:30	2024-06-27 16:53:17.071+05:30
+\.
+
+
+--
+-- TOC entry 3228 (class 0 OID 100452)
+-- Dependencies: 231
+-- Data for Name: forms; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.forms (id, application_id, non_verified, accept, rejected, query_status, query_text, query_response, upload_image, certificate_generate, upload_certificate, delivered, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	1	1	\N	0	ok	0	1	1	1	1	2023-09-06 13:48:12.014+05:30	2023-09-14 16:31:53.328+05:30
+2	APPLICANT/2024/02	1	1	\N	0	\N	0	1	1	1	1	2024-06-27 16:53:17.021+05:30	2024-06-27 17:12:09.466+05:30
+\.
+
+
+--
+-- TOC entry 3230 (class 0 OID 100466)
+-- Dependencies: 233
+-- Data for Name: generated_certificates; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.generated_certificates (id, application_id, certificate_no, generated__certificate_path, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	MRG/000001/2023	/upload/generated/1694689261579.pdf	2023-09-14 16:31:01.58+05:30	2023-09-14 16:31:01.58+05:30
+2	APPLICANT/2024/02	MRG/000001/2024	/upload/generated/1719488506076.pdf	2024-06-27 17:11:46.077+05:30	2024-06-27 17:11:46.077+05:30
+\.
+
+
+--
+-- TOC entry 3232 (class 0 OID 100477)
+-- Dependencies: 235
+-- Data for Name: grooms; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.grooms (id, application_id, prefix, first_name, middle_name, last_name, father_prefix, father_first_name, father_middle_name, father_last_name, mother_prefix, mother_first_name, mother_middle_name, mother_last_name, status, occupation, dob, phone, email, isdisability, disability, present_country_id, present_state_id, present_province, present_district, present_villagetowncity, present_policestation, present_postoffice, present_addressline1, present_addressline2, present_pincode, present_lac, present_residencyperiodmonth, present_residencyperiodyear, is_permanent_same_as_present, permanent_country_id, permanent_state_id, permanent_province, permanent_district, permanent_villagetowncity, permanent_policestation, permanent_post_office, permanent_addressline1, permanent_addressline2, permanent_pincode, permanent_lac, permanent_residencyperiodmonth, permanent_residencyperiodyear, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	Mr.	Ocean	Petra Levine	Kane	Mr.	Porter	Darius Griffith	Dalton	Mrs.	Nehru	Gisela Kemp	Burgess	Married	Govt. Service	1972-01-05	1234567889	cekiwyvo@mailinator.com	No	\N	2	\N	test	\N	test			test	tset	789456	LAC	February	1973	yes	2	\N	test	\N	test			test	tset	789456	LAC	February	1973	2023-09-06 13:48:12.048+05:30	2023-09-06 13:48:12.048+05:30
+2	APPLICANT/2024/02	Mr.	Pushpa		Chhetri	Mr.	Pushpa		Chhetri	Mrs.	Pushpa		Chhetri	Unmarried	Govt. Service	2003-06-20	7002925965	pushpachhetri5@gmail.com	No	\N	1	4		2	asd	asd	asd			123123	LAC	February	1980	yes	1	4		2	asd	asd	asd			123123	LAC	February	1980	2024-06-27 16:53:17.056+05:30	2024-06-27 16:53:17.056+05:30
+\.
+
+
+--
+-- TOC entry 3206 (class 0 OID 99985)
+-- Dependencies: 209
+-- Data for Name: igrs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.igrs (id, userid, name, office_name, office_address, phone, email, status, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3224 (class 0 OID 100430)
+-- Dependencies: 227
+-- Data for Name: image_captures; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.image_captures (id, application_id, image_path, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	/upload/captured/1694689238519.png	2023-09-14 16:30:38.522+05:30	2023-09-14 16:30:38.522+05:30
+2	APPLICANT/2024/02	/upload/captured/1719488487527.png	2024-06-27 17:11:27.528+05:30	2024-06-27 17:11:27.528+05:30
+\.
+
+
+--
+-- TOC entry 3204 (class 0 OID 99936)
+-- Dependencies: 207
+-- Data for Name: kazis; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.kazis (id, userid, district_id, office_name, office_address, name, phone, email, assosciated_sro, document_path, status, created_at, updated_at) FROM stdin;
+1	KAZI0001	2	Kazi Baksa	1\r\nsankar nagar	Kazi One	7002925965	kazi@gmail.com	"[1]"	/upload/kazi/1690269651531_doc2.pdf	t	2023-07-25 12:50:51.532+05:30	2023-07-25 12:50:51.532+05:30
+\.
+
+
+--
+-- TOC entry 3234 (class 0 OID 100488)
+-- Dependencies: 237
+-- Data for Name: other_details; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.other_details (id, application_id, lawyer_prefix, lawyer_first_name, lawyer_middle_name, lawyer_last_name, lawyer_gender, lawyer_phone, lawyer_state, lawyer_district, lawyer_villagetowncity, lawyer_policestation, lawyer_postoffice, lawyer_pincode, witness1_prefix, witness1_first_name, witness1_middle_name, witness1_last_name, witness1_gender, witness1_phone, witness1_state, witness1_district, witness1_villagetowncity, witness1_policestation, witness1_postoffice, witness1_pincode, witness2_prefix, witness2_first_name, witness2_middle_name, witness2_last_name, witness2_gender, witness2_phone, witness2_state, witness2_district, witness2_villagetowncity, witness2_policestation, witness2_postoffice, witness2_pincode, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	Mr.	Nerea	Madeline Dillon	Bonner	Male	789456122	1	37	tes	tset	testtest	123456	Mr.	Kitra	Harriet Baker	Lloyd	Male	123789	3	65	test	test	test	123456	Mr.	Anastasia	Lael Faulkner	Gould	Male	43	1	37	wer	wer	wer	123456	2023-09-06 13:48:12.061+05:30	2023-09-06 13:48:12.061+05:30
+2	APPLICANT/2024/02	Mr.	asd	asd	asd	Male	7002925965	4	2	asd	asd	asd	123123	Mr.	asdasd	asd	asd	Male	9531382610	4	2	asd	asd	asd	231231	Mr.	asd	sd	asd	Male	7002925965	4	3	asd	asdasd	asd	123123	2024-06-27 16:53:17.065+05:30	2024-06-27 16:53:17.065+05:30
+\.
+
+
+--
+-- TOC entry 3236 (class 0 OID 100499)
+-- Dependencies: 239
+-- Data for Name: query_logs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.query_logs (id, application_id, query_text, is_verified, sent_timestamp, recieved_timestamp, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	Something went wrong	0	2023-09-06 13:48:36.141+05:30	\N	2023-09-06 13:48:36.141+05:30	2023-09-06 13:48:36.141+05:30
+2	APPLICANT/2023/01	ok	0	2023-09-06 14:34:49.837+05:30	\N	2023-09-06 14:34:49.837+05:30	2023-09-06 14:34:49.837+05:30
+3	APPLICANT/2023/01	ok	0	2023-09-06 14:38:35.907+05:30	\N	2023-09-06 14:38:35.907+05:30	2023-09-06 14:38:35.907+05:30
+\.
+
+
+--
+-- TOC entry 3198 (class 0 OID 99648)
+-- Dependencies: 201
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.roles (id, name, created_at, updated_at) FROM stdin;
+1	Admin	2023-07-12 15:52:14.443+05:30	2023-07-12 15:52:14.443+05:30
+3	SRO	2023-07-15 11:52:28.699+05:30	2023-07-15 11:52:39.371+05:30
+2	DC	2023-07-12 15:52:33.401+05:30	2023-07-15 15:24:10.031+05:30
+4	Kazi	2023-07-15 15:24:23.407+05:30	2023-07-15 15:24:23.407+05:30
+5	IGR	2023-07-15 15:24:31.762+05:30	2023-07-15 15:30:17.925+05:30
+6	AIGR	2023-07-15 15:30:27.054+05:30	2023-07-15 15:30:27.054+05:30
+\.
+
+
+--
+-- TOC entry 3210 (class 0 OID 100034)
+-- Dependencies: 213
+-- Data for Name: sros; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.sros (id, userid, district_id, office_name, office_address, name, phone, email, status, created_at, updated_at) FROM stdin;
+1	SRO1	2	SRO Baksa	1\nsankar nagar	Sro One	7002925965	sro@gmail.com	t	2023-07-25 12:50:13.306+05:30	2023-07-25 12:50:13.306+05:30
+\.
+
+
+--
+-- TOC entry 3214 (class 0 OID 100105)
+-- Dependencies: 217
+-- Data for Name: states; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.states (id, name, created_at, updated_at) FROM stdin;
+1	Andaman Nicobar	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+2	Andhra Pradesh	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+3	Arunachal Pradesh	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+4	Assam	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+5	Bihar	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+6	Chandigarh	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+7	Chhattisgarh	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+8	Dadra and Nagar Haveli and Daman and Diu	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+9	Delhi	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+10	Goa	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+11	Gujarat	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+12	Haryana	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+13	Himachal Pradesh	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+14	Jammu Kashmir	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+15	Jharkhand	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+16	Karnataka	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+17	Kerala	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+18	Ladakh	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+19	Lakshadweep	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+20	Madhya Pradesh	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+21	Maharashtra	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+22	Manipur	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+23	Meghalaya	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+24	Mizoram	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+25	Nagaland	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+26	Odisha	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+27	Puducherry	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+28	Punjab	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+29	Rajasthan	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+30	Sikkim	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+31	Tamil Nadu	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+32	Telangana	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+33	Tripura	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+34	Uttar Pradesh	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+35	Uttarakhand	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+36	West Bengal	2023-07-31 12:40:25.257645+05:30	2023-07-31 12:40:25.257645+05:30
+\.
+
+
+--
+-- TOC entry 3218 (class 0 OID 100149)
+-- Dependencies: 221
+-- Data for Name: tests; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tests (id, name, email, created_at, updated_at) FROM stdin;
+1	sdsdf	sfdsdfdsf@gmail.com	2023-08-04 11:44:20.998+05:30	2023-08-04 11:44:20.998+05:30
+2		sfdsdfdsf@gmail.com	2023-08-04 11:54:52.617+05:30	2023-08-04 11:54:52.617+05:30
+3	s	sfdsdfdsf@gmail.com	2023-08-04 12:02:23.265+05:30	2023-08-04 12:02:23.265+05:30
+4	s	sfdsdfdsf@gmail.com	2023-08-04 12:02:54.71+05:30	2023-08-04 12:02:54.71+05:30
+5	aasdass	sfdsdfdsf@gmail	2023-08-04 12:57:21.871+05:30	2023-08-04 12:57:21.871+05:30
+6	aasdass	sfdsdfdsf@gmail.com	2023-08-04 13:01:07.318+05:30	2023-08-04 13:01:07.318+05:30
+7	dsasd	sfdsdfdsf@gmail.com	2023-08-10 16:46:41.698+05:30	2023-08-10 16:46:41.698+05:30
+\.
+
+
+--
+-- TOC entry 3238 (class 0 OID 100511)
+-- Dependencies: 241
+-- Data for Name: upload_certificates; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.upload_certificates (id, application_id, certificate_path, created_at, updated_at) FROM stdin;
+1	APPLICANT/2023/01	/upload/certificate/1694689302413.pdf	2023-09-14 16:31:42.414+05:30	2023-09-14 16:31:42.414+05:30
+2	APPLICANT/2024/02	/upload/certificate/1719488519750.pdf	2024-06-27 17:11:59.75+05:30	2024-06-27 17:11:59.75+05:30
+\.
+
+
+--
+-- TOC entry 3200 (class 0 OID 99849)
+-- Dependencies: 203
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, name, userid, password, role, status, created_at, updated_at) FROM stdin;
+2	John Admin	admin	a41a20e025d3cb51b08900556f466f0c2e9938ae0f31a5fc40d06773778eb444	1	t	2023-07-17 13:02:06.074+05:30	2023-07-17 13:02:06.074+05:30
+5	igr test	IGR1	f8c950146508ab47f99e68ff8229158e6cc3834f2bb565e628501773ded68249	5	t	2023-07-17 13:12:21.563+05:30	2023-07-17 13:12:21.563+05:30
+7	test name	SRO2	f8c950146508ab47f99e68ff8229158e6cc3834f2bb565e628501773ded68249	3	f	2023-07-17 13:13:34.277+05:30	2023-07-17 13:13:34.277+05:30
+4	test names	SRO1	f8c950146508ab47f99e68ff8229158e6cc3834f2bb565e628501773ded68249	3	t	2023-07-17 13:07:43.561+05:30	2023-07-17 14:54:04.579+05:30
+6	test names	DC1	f8c950146508ab47f99e68ff8229158e6cc3834f2bb565e628501773ded68249	2	t	2023-07-17 13:12:53.109+05:30	2023-07-17 14:54:13.406+05:30
+10	sdsd	KAZI0002	f8c950146508ab47f99e68ff8229158e6cc3834f2bb565e628501773ded68249	4	t	2023-07-17 16:34:32.7+05:30	2023-07-17 16:34:32.7+05:30
+11	Pushpa Chhetris	KAZI0003	f8c950146508ab47f99e68ff8229158e6cc3834f2bb565e628501773ded68249	4	t	2023-07-19 11:24:22.272+05:30	2023-07-19 11:24:22.272+05:30
+12	Sro One	SRO1	f8c950146508ab47f99e68ff8229158e6cc3834f2bb565e628501773ded68249	3	t	2023-07-25 12:50:13.344+05:30	2023-07-25 12:50:13.344+05:30
+13	Kazi One	KAZI0001	f8c950146508ab47f99e68ff8229158e6cc3834f2bb565e628501773ded68249	4	t	2023-07-25 12:50:51.537+05:30	2023-07-25 12:50:51.537+05:30
+\.
+
+
+--
+-- TOC entry 3265 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: aigrs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.aigrs_id_seq', 1, false);
+
+
+--
+-- TOC entry 3266 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: applicants_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.applicants_id_seq', 2, true);
+
+
+--
+-- TOC entry 3267 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: brides_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.brides_id_seq', 2, true);
+
+
+--
+-- TOC entry 3268 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.countries_id_seq', 249, true);
+
+
+--
+-- TOC entry 3269 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: dcs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.dcs_id_seq', 1, false);
+
+
+--
+-- TOC entry 3270 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: districts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.districts_id_seq', 1, false);
+
+
+--
+-- TOC entry 3271 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: documents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.documents_id_seq', 2, true);
+
+
+--
+-- TOC entry 3272 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: forms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.forms_id_seq', 2, true);
+
+
+--
+-- TOC entry 3273 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: generated_certificates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.generated_certificates_id_seq', 2, true);
+
+
+--
+-- TOC entry 3274 (class 0 OID 0)
+-- Dependencies: 234
+-- Name: grooms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.grooms_id_seq', 2, true);
+
+
+--
+-- TOC entry 3275 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: igrs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.igrs_id_seq', 1, false);
+
+
+--
+-- TOC entry 3276 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: image_captures_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.image_captures_id_seq', 2, true);
+
+
+--
+-- TOC entry 3277 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: kazis_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.kazis_id_seq', 1, true);
+
+
+--
+-- TOC entry 3278 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: other_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.other_details_id_seq', 2, true);
+
+
+--
+-- TOC entry 3279 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: query_logs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.query_logs_id_seq', 3, true);
+
+
+--
+-- TOC entry 3280 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.roles_id_seq', 6, true);
+
+
+--
+-- TOC entry 3281 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: sros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.sros_id_seq', 1, true);
+
+
+--
+-- TOC entry 3282 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: states_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.states_id_seq', 36, true);
+
+
+--
+-- TOC entry 3283 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tests_id_seq', 7, true);
+
+
+--
+-- TOC entry 3284 (class 0 OID 0)
+-- Dependencies: 240
+-- Name: upload_certificates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.upload_certificates_id_seq', 2, true);
+
+
+--
+-- TOC entry 3285 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 13, true);
+
+
+--
+-- TOC entry 3030 (class 2606 OID 99920)
+-- Name: aigrs aigrs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.aigrs
+    ADD CONSTRAINT aigrs_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3048 (class 2606 OID 100416)
+-- Name: applicants applicants_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.applicants
+    ADD CONSTRAINT applicants_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3050 (class 2606 OID 100427)
+-- Name: brides brides_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.brides
+    ADD CONSTRAINT brides_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3040 (class 2606 OID 100063)
+-- Name: countries countries_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.countries
+    ADD CONSTRAINT countries_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3036 (class 2606 OID 100019)
+-- Name: dcs dcs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.dcs
+    ADD CONSTRAINT dcs_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3044 (class 2606 OID 100137)
+-- Name: districts districts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.districts
+    ADD CONSTRAINT districts_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3054 (class 2606 OID 100449)
+-- Name: documents documents_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.documents
+    ADD CONSTRAINT documents_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3056 (class 2606 OID 100463)
+-- Name: forms forms_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.forms
+    ADD CONSTRAINT forms_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3058 (class 2606 OID 100474)
+-- Name: generated_certificates generated_certificates_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.generated_certificates
+    ADD CONSTRAINT generated_certificates_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3060 (class 2606 OID 100485)
+-- Name: grooms grooms_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.grooms
+    ADD CONSTRAINT grooms_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3034 (class 2606 OID 99994)
+-- Name: igrs igrs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.igrs
+    ADD CONSTRAINT igrs_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3052 (class 2606 OID 100438)
+-- Name: image_captures image_captures_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.image_captures
+    ADD CONSTRAINT image_captures_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3032 (class 2606 OID 99946)
+-- Name: kazis kazis_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.kazis
+    ADD CONSTRAINT kazis_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3062 (class 2606 OID 100496)
+-- Name: other_details other_details_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.other_details
+    ADD CONSTRAINT other_details_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3064 (class 2606 OID 100508)
+-- Name: query_logs query_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.query_logs
+    ADD CONSTRAINT query_logs_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3026 (class 2606 OID 99653)
+-- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.roles
+    ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3038 (class 2606 OID 100043)
+-- Name: sros sros_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sros
+    ADD CONSTRAINT sros_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3042 (class 2606 OID 100110)
+-- Name: states states_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.states
+    ADD CONSTRAINT states_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3046 (class 2606 OID 100157)
+-- Name: tests tests_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tests
+    ADD CONSTRAINT tests_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3066 (class 2606 OID 100519)
+-- Name: upload_certificates upload_certificates_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.upload_certificates
+    ADD CONSTRAINT upload_certificates_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3028 (class 2606 OID 99858)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2024-06-27 19:29:22
+
+--
+-- PostgreSQL database dump complete
+--
+

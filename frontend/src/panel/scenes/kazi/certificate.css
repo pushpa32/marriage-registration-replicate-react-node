@@ -1,0 +1,33 @@
+.first-head{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 1px;
+    word-spacing: 12px;
+}
+.regn-style{
+    text-align: center;
+    font-weight: 600;
+}
+.regn-address-style{
+    text-align: center;
+    font-weight: 600;
+}
+.second-head{
+    text-align: center;
+    font-weight: bold;
+    font-size: 21px;
+    letter-spacing: 1px;
+    word-spacing: 12px;
+    background-color: black;
+    color: white;
+    padding: 3px 8px 3px 8px;
+}
+
+.positioned{
+    position: absolute;
+    bottom: 0px;
+    right: 30px;
+    font-size: 18px;
+    text-align: center;
+}

@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'BeautifulFont';
+    src: url('path-to-your-font-file.woff2') format('woff2');
+    /* Add more src declarations for different font formats (woff, ttf, etc.) */
+}
+
+/* Apply the font family to specific elements */
+.my-element {
+    font-family: 'BeautifulFont', sans-serif;
+}
+
+/* You can also apply the font family globally */
+body {
+    font-family: 'BeautifulFont', sans-serif;
+}

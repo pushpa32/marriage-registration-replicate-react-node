@@ -1,0 +1,20 @@
+.btn-table .css-1ny7bi9-MuiButtonBase-root-MuiButton-root {
+    background: white;
+    margin-bottom: 5px;
+}
+
+/* #react-select-3-listbox, #react-select-9-listbox{
+    color: black;
+} */
+
+/* select {
+    color: black;
+} */
+
+.btn-view-doc{
+    padding: 9px !important;
+    font-size: 13px !important;
+    width: 13%;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
